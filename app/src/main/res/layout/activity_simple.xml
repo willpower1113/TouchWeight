@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.willpower.touch.SimpleActivity">
+
+    <com.willpower.touch.textview.AppTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        app:shadowRadio="7"
+        android:gravity="center"
+        app:shadowColor="#000000"
+        app:selector="@color/colorAccent"
+        app:normal="@color/colorPrimary"
+        android:text="@string/app_name"
+        android:textColor="#ffffff"/>
+</FrameLayout>
