@@ -21,7 +21,7 @@ import static android.view.Gravity.CENTER;
  * Created by Administrator on 2017/8/23.
  */
 
-public class AppButton extends AppCompatButton implements GestureDetector.OnGestureListener {
+public class AppButton extends AppCompatButton implements GestureDetector.OnGestureListener{
     private static final int DEFAULT_SELECTOR = Color.parseColor("#60000000");
     private static final int DEFAULT_NORMAL = Color.parseColor("#00000000");
 
@@ -90,12 +90,12 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
 
     @Override
     protected void onDraw(Canvas canvas) {
-        setLayerType(LAYER_TYPE_SOFTWARE, null);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(color_rect);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         RectF rect;
         if (drawShadow) {
+            setLayerType(LAYER_TYPE_SOFTWARE,null);
             rect = new RectF(shadowRadio,shadowRadio, getWidth() - shadowRadio, getHeight() - shadowRadio);
             paint.setShadowLayer(shadowRadio, 0, 0, shadowColor);
         } else {
