@@ -53,7 +53,7 @@ public class ShadowRecyclerView extends RecyclerView {
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AppButton);
-        shadowColor = ta.getColor(R.styleable.ShadowRecyclerView_shadowColor, DEFAULT_SHADOW_COLOR);
+        shadowColor = ta.getColor(R.styleable.ShadowRecyclerView_shadowsColor, DEFAULT_SHADOW_COLOR);
         shadowRadio = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_shadowRadio, DEFAULT_SHADOW_RADIO));
         viewColor = ta.getColor(R.styleable.ShadowRecyclerView_viewColor, DEFAULT_VIEW_COLOR);
         radio = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_radio, 0));

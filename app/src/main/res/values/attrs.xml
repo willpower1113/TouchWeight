@@ -13,7 +13,7 @@
 
     <declare-styleable name="ShadowRecyclerView">
         <attr name="radio" format="dimension"></attr>
-        <attr name="shadowColor" format="color"></attr>
+        <attr name="shadowsColor" format="color"></attr>
         <attr name="viewColor" format="color"></attr>
         <attr name="shadowRadio" format="float"></attr>
     </declare-styleable>
