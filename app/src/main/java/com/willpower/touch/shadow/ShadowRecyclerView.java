@@ -25,13 +25,13 @@ public class ShadowRecyclerView extends RecyclerView {
     /**
      * shadow
      */
-    private boolean drawShadow;
-    private int shadowColor;
-    private float shadowRadio;
+    private boolean hasShadow;
+    private int shadowsColor;
+    private float shadowsRadio;
     /**
      * radio
      */
-    private float radio;
+    private float radios;
 
     /**
      * background
@@ -53,11 +53,11 @@ public class ShadowRecyclerView extends RecyclerView {
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AppButton);
-        shadowColor = ta.getColor(R.styleable.ShadowRecyclerView_shadowsColor, DEFAULT_SHADOW_COLOR);
-        shadowRadio = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_shadowRadio, DEFAULT_SHADOW_RADIO));
+        shadowsColor = ta.getColor(R.styleable.ShadowRecyclerView_shadowsColor, DEFAULT_SHADOW_COLOR);
+        shadowsRadio = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_shadowsRadio, DEFAULT_SHADOW_RADIO));
         viewColor = ta.getColor(R.styleable.ShadowRecyclerView_viewColor, DEFAULT_VIEW_COLOR);
-        radio = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_radio, 0));
-        drawShadow = shadowRadio > 0 ? true : false;
+        radios = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_radios, 0));
+        hasShadow = shadowsRadio > 0 ? true : false;
     }
 
 
@@ -67,14 +67,14 @@ public class ShadowRecyclerView extends RecyclerView {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(viewColor);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        if (drawShadow) {
-            setPadding((int)shadowRadio,(int)shadowRadio,(int)shadowRadio,(int)shadowRadio);
+        if (hasShadow) {
+            setPadding((int)shadowsRadio,(int)shadowsRadio,(int)shadowsRadio,(int)shadowsRadio);
             setLayerType(LAYER_TYPE_SOFTWARE, null);//开启硬件加速
         }
-        RectF rect = new RectF(shadowRadio, shadowRadio, getWidth() - shadowRadio, getHeight() - shadowRadio);
-        paint.setShadowLayer(shadowRadio, 0, 0, shadowColor);
-        if (radio > 0) {
-            canvas.drawRoundRect(rect, radio, radio, paint);
+        RectF rect = new RectF(shadowsRadio, shadowsRadio, getWidth() - shadowsRadio, getHeight() - shadowsRadio);
+        paint.setShadowLayer(shadowsRadio, 0, 0, shadowsColor);
+        if (radios > 0) {
+            canvas.drawRoundRect(rect, radios, radios, paint);
         } else {
             canvas.drawRect(rect, paint);
         }
