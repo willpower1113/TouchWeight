@@ -163,10 +163,38 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
 
     public void setSelector(int selector) {
         this.selector = selector;
+        postInvalidate();
     }
 
     public void setNormal(int normal) {
         this.normal = normal;
+        postInvalidate();
+    }
+
+
+    public void setDrawShadow(boolean drawShadow) {
+        this.drawShadow = drawShadow;
+        postInvalidate();
+    }
+
+    public void setShadowColor(int shadowColor) {
+        this.shadowColor = shadowColor;
+        postInvalidate();
+    }
+
+    public void setShadowRadio(float shadowRadio) {
+        this.shadowRadio = shadowRadio;
+        postInvalidate();
+    }
+
+    public void setRadioX(float radioX) {
+        this.radioX = radioX;
+        postInvalidate();
+    }
+
+    public void setRadioY(float radioY) {
+        this.radioY = radioY;
+        postInvalidate();
     }
 
     private static float dp2px(float dp) {
