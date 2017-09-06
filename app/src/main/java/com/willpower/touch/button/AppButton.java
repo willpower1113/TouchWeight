@@ -168,9 +168,8 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
 
     public void setNormal(int normal) {
         this.normal = normal;
-        postInvalidate();
+        setColor_rect(normal);
     }
-
 
     public void setDrawShadow(boolean drawShadow) {
         this.drawShadow = drawShadow;
