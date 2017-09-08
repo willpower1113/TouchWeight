@@ -22,6 +22,9 @@ public class ShadowRecyclerView extends RecyclerView {
     private static final int DEFAULT_VIEW_COLOR = Color.parseColor("#FFFFFF");
     private static final int DEFAULT_SHADOW_COLOR = Color.parseColor("#99000000");
     private static final float DEFAULT_SHADOW_RADIO = 5;
+
+    private static final int MODEL_ALL = 1;
+    private static final int MODEL_BOTTOM = 2;
     /**
      * shadow
      */
@@ -37,6 +40,11 @@ public class ShadowRecyclerView extends RecyclerView {
      * background
      */
     private int viewColor;
+
+    /**
+     * shadowModel
+     */
+    private int mShadowModel;
 
     public ShadowRecyclerView(Context context) {
         super(context);
@@ -57,6 +65,8 @@ public class ShadowRecyclerView extends RecyclerView {
         shadowsRadio = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_shadowsRadio, DEFAULT_SHADOW_RADIO));
         viewColor = ta.getColor(R.styleable.ShadowRecyclerView_viewColor, DEFAULT_VIEW_COLOR);
         radios = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_radios, 0));
+        mShadowModel = ta.getInteger(R.styleable.ShadowRecyclerView_mShadowModel, MODEL_ALL);
+        ta.recycle();
         hasShadow = shadowsRadio > 0 ? true : false;
     }
 
@@ -71,7 +81,14 @@ public class ShadowRecyclerView extends RecyclerView {
             setPadding((int)shadowsRadio,(int)shadowsRadio,(int)shadowsRadio,(int)shadowsRadio);
             setLayerType(LAYER_TYPE_SOFTWARE, null);//开启硬件加速
         }
-        RectF rect = new RectF(shadowsRadio, shadowsRadio, getWidth() - shadowsRadio, getHeight() - shadowsRadio);
+        RectF rect;
+        if (mShadowModel == MODEL_BOTTOM) {//只有底部有阴影
+            rect = new RectF(0, 0, getWidth(), getHeight() - shadowsRadio);
+            setPadding(0, 0, 0, (int) shadowsRadio);
+        } else {//都有阴影
+            rect = new RectF(shadowsRadio, shadowsRadio, getWidth() - shadowsRadio, getHeight() - shadowsRadio);
+        }
+
         paint.setShadowLayer(shadowsRadio, 0, 0, shadowsColor);
         if (radios > 0) {
             canvas.drawRoundRect(rect, radios, radios, paint);

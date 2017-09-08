@@ -77,6 +77,7 @@ public class AppTextView extends AppCompatTextView implements GestureDetector.On
         radioY = dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
         shadowColor = ta.getColor(R.styleable.AppButton_shadowColor, DEFAULT_SHADOW_COLOR);
         shadowRadio = ta.getFloat(R.styleable.AppButton_shadowRadio, DEFAULT_SHADOW_RADIO);
+        ta.recycle();
         if (shadowRadio > 0) {
             drawShadow = true;
         } else {

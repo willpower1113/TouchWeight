@@ -16,6 +16,10 @@
         <attr name="shadowsColor" format="color"></attr>
         <attr name="viewColor" format="color"></attr>
         <attr name="shadowsRadio" format="float"></attr>
+        <attr name="mShadowModel">
+            <enum name="all" value="1"/>
+            <enum name="bottom" value="2"/>
+        </attr>
     </declare-styleable>
 
 </resources>
