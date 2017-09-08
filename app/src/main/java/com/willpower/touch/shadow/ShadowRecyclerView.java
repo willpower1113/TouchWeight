@@ -21,7 +21,7 @@ import com.willpower.touch.R;
 public class ShadowRecyclerView extends RecyclerView {
     private static final int DEFAULT_VIEW_COLOR = Color.parseColor("#FFFFFF");
     private static final int DEFAULT_SHADOW_COLOR = Color.parseColor("#99000000");
-    private static final float DEFAULT_SHADOW_RADIO = 5;
+    private static final int DEFAULT_SHADOW_RADIO = 5;
 
     private static final int MODEL_ALL = 1;
     private static final int MODEL_BOTTOM = 2;
@@ -60,12 +60,12 @@ public class ShadowRecyclerView extends RecyclerView {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AppButton);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShadowRecyclerView);
         shadowsColor = ta.getColor(R.styleable.ShadowRecyclerView_shadowsColor, DEFAULT_SHADOW_COLOR);
-        shadowsRadio = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_shadowsRadio, DEFAULT_SHADOW_RADIO));
+        shadowsRadio = ta.getInt(R.styleable.ShadowRecyclerView_shadowsRadio, DEFAULT_SHADOW_RADIO);
         viewColor = ta.getColor(R.styleable.ShadowRecyclerView_viewColor, DEFAULT_VIEW_COLOR);
-        radios = dp2px(ta.getDimension(R.styleable.ShadowRecyclerView_radios, 0));
-        mShadowModel = ta.getInteger(R.styleable.ShadowRecyclerView_mShadowModel, MODEL_ALL);
+        radios = ta.getInt(R.styleable.ShadowRecyclerView_radios, 0);
+        mShadowModel = ta.getInt(R.styleable.ShadowRecyclerView_mShadowModel, MODEL_ALL);
         ta.recycle();
         hasShadow = shadowsRadio > 0 ? true : false;
     }
@@ -88,7 +88,6 @@ public class ShadowRecyclerView extends RecyclerView {
         } else {//都有阴影
             rect = new RectF(shadowsRadio, shadowsRadio, getWidth() - shadowsRadio, getHeight() - shadowsRadio);
         }
-
         paint.setShadowLayer(shadowsRadio, 0, 0, shadowsColor);
         if (radios > 0) {
             canvas.drawRoundRect(rect, radios, radios, paint);

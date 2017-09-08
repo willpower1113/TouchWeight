@@ -12,10 +12,10 @@
 
 
     <declare-styleable name="ShadowRecyclerView">
-        <attr name="radios" format="dimension"></attr>
+        <attr name="radios" format="integer"></attr>
         <attr name="shadowsColor" format="color"></attr>
         <attr name="viewColor" format="color"></attr>
-        <attr name="shadowsRadio" format="float"></attr>
+        <attr name="shadowsRadio" format="integer"></attr>
         <attr name="mShadowModel">
             <enum name="all" value="1"/>
             <enum name="bottom" value="2"/>
