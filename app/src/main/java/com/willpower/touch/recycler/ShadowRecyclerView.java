@@ -1,7 +1,6 @@
-package com.willpower.touch.shadow;
+package com.willpower.touch.recycler;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,12 +9,12 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 
 import com.willpower.touch.R;
 
 /**
  * Created by Administrator on 2017/8/31.
+ * 带阴影效果的RecyclerView
  */
 
 public class ShadowRecyclerView extends RecyclerView {
@@ -67,10 +66,8 @@ public class ShadowRecyclerView extends RecyclerView {
         radios = ta.getInt(R.styleable.ShadowRecyclerView_radios, 0);
         mShadowModel = ta.getInt(R.styleable.ShadowRecyclerView_mShadowModel, MODEL_ALL);
         ta.recycle();
-
         hasShadow = shadowsRadio > 0 ? true : false;
     }
-
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -96,13 +93,5 @@ public class ShadowRecyclerView extends RecyclerView {
             canvas.drawRect(rect, paint);
         }
         super.onDraw(canvas);
-    }
-
-    private static float dp2px(float dp) {
-        if (dp == 0) {
-            return 0f;
-        }
-        Resources r = Resources.getSystem();
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 }

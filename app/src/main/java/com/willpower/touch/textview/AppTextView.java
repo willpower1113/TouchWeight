@@ -19,7 +19,7 @@ import com.willpower.touch.R;
  * Created by Administrator on 2017/8/24.
  */
 
-public class AppTextView extends AppCompatTextView implements GestureDetector.OnGestureListener {
+public class AppTextView extends AppCompatTextView implements GestureDetector.OnGestureListener{
     private static final int DEFAULT_SELECTOR = Color.parseColor("#50000000");
     private static final int DEFAULT_NORMAL = Color.parseColor("#00000000");
 
@@ -50,7 +50,6 @@ public class AppTextView extends AppCompatTextView implements GestureDetector.On
      * 监听手势
      */
     private GestureDetector mGestureDetector;
-
 
     public AppTextView(Context context) {
         super(context);
@@ -138,21 +137,18 @@ public class AppTextView extends AppCompatTextView implements GestureDetector.On
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         // Auto-generated method stub
-        setColor_rect(normal);
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
         //长安时，手动触发长安事件
-        setColor_rect(normal);
         performLongClick();
     }
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         // Auto-generated method stub
-        setColor_rect(normal);
         return false;
     }
 
@@ -160,7 +156,6 @@ public class AppTextView extends AppCompatTextView implements GestureDetector.On
         this.color_rect = color_rect;
         postInvalidate();
     }
-
     public void setSelector(int selector) {
         this.selector = selector;
     }

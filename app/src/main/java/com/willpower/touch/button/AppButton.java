@@ -180,21 +180,18 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         // Auto-generated method stub
-        setColor_rect(normal);
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
         //长安时，手动触发长安事件
-        setColor_rect(normal);
         performLongClick();
     }
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         // Auto-generated method stub
-        setColor_rect(normal);
         return false;
     }
 
