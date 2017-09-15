@@ -94,6 +94,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         });
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getActionMasked() == MotionEvent.ACTION_CANCEL || event.getActionMasked() == MotionEvent.ACTION_UP) {
