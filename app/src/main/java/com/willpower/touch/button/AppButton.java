@@ -105,7 +105,7 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
         radioY = ScreenUtils.dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
         shadowColor = ta.getColor(R.styleable.AppButton_shadowColor, DEFAULT_SHADOW_COLOR);
         shadowRadio = ta.getFloat(R.styleable.AppButton_shadowRadio, DEFAULT_SHADOW_RADIO);
-        isDrawRipple = ta.getBoolean(R.styleable.AppButton_appButtonIsDrawRipple, false);
+        isDrawRipple = ta.getBoolean(R.styleable.AppButton_appButtonIsDrawRipple, true);
         viewAlpha = ta.getInt(R.styleable.AppButton_appButtonViewAlpha, 70);
         viewRippleColor = ta.getInteger(R.styleable.AppButton_appButtonViewRippleColor, Color.WHITE);
         appButtonDuration = ta.getInteger(R.styleable.AppButton_appButtonDuration,DEFAULT_DURATION);

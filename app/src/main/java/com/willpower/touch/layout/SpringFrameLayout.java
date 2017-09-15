@@ -97,7 +97,7 @@ public class SpringFrameLayout extends FrameLayout implements GestureDetector.On
         radio = ta.getFloat(R.styleable.SpringFrameLayout_rectRadios, 0f);
         // 设置点击缩放
         scaleModel = ta.getBoolean(R.styleable.SpringFrameLayout_scaleModel,true);
-        isDrawRipple = ta.getBoolean(R.styleable.SpringFrameLayout_isDrawRipple, false);
+        isDrawRipple = ta.getBoolean(R.styleable.SpringFrameLayout_isDrawRipple, true);
         viewAlpha = ta.getInt(R.styleable.SpringFrameLayout_viewAlpha, 70);
         viewRippleColor = ta.getInteger(R.styleable.SpringFrameLayout_viewRippleColor, Color.WHITE);
         animDuration = ta.getInteger(R.styleable.SpringFrameLayout_animDuration,DEFAULT_DURATION);

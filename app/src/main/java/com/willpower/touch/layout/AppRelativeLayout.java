@@ -54,7 +54,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AppRelativeLayout);
-        relativeLayoutIsDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutIsDrawRipple, false);
+        relativeLayoutIsDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutIsDrawRipple, true);
         relativeLayoutViewAlpha = ta.getInt(R.styleable.AppRelativeLayout_relativeLayoutViewAlpha, 70);
         relativeLayoutViewRippleColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutViewRippleColor, Color.WHITE);
         relativeLayoutDuration = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutDuration, DEFAULT_DURATION);

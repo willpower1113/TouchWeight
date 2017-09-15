@@ -87,7 +87,7 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
         colorShadow = ta.getColor(R.styleable.ShadowRoundImageView_colorShadow, DEFAULT_DARK_COLOR);
         colorNormal = ta.getColor(R.styleable.ShadowRoundImageView_colorNormal, Color.WHITE);
         colorSelector = ta.getColor(R.styleable.ShadowRoundImageView_colorSelector, Color.LTGRAY);
-        SRIIsDrawRipple = ta.getBoolean(R.styleable.ShadowRoundImageView_SRIIsDrawRipple, false);
+        SRIIsDrawRipple = ta.getBoolean(R.styleable.ShadowRoundImageView_SRIIsDrawRipple, true);
         SRIViewAlpha = ta.getInt(R.styleable.ShadowRoundImageView_SRIViewAlpha, 70);
         SRIViewRippleColor = ta.getInteger(R.styleable.ShadowRoundImageView_SRIViewRippleColor, Color.WHITE);
         SRIDuration = ta.getInteger(R.styleable.ShadowRoundImageView_SRIDuration,DEFAULT_DURATION);

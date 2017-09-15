@@ -15,6 +15,4 @@ public class TimeOutViewHolder extends BaseHolder {
         tvTip = (TextView) view.findViewById(R.id.tv_message);
         ivImg = (ImageView) view.findViewById(R.id.iv_img);
     }
-
-
 }
