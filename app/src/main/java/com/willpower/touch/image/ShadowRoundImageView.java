@@ -52,10 +52,6 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
 
     private float rippleRadios;
 
-    private float rippleX;
-
-    private float rippleY;
-
     private int SRIDuration;
 
     private int width;
@@ -113,7 +109,7 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
         canvas.drawOval(rectF, paint);
         super.onDraw(canvas);
         if (isDrawingRipple) {//绘制波纹
-            RectF rectRect = new RectF(rippleX - rippleRadios, rippleY - rippleRadios, rippleX + rippleRadios, rippleY + rippleRadios);
+            RectF rectRect = new RectF(width/2 - rippleRadios, width/2 - rippleRadios, width/2 + rippleRadios, width/2 + rippleRadios);
             Paint ripplePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             ripplePaint.setColor(SRIViewRippleColor);
             ripplePaint.setAlpha(SRIViewAlpha);
@@ -134,8 +130,6 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
     public boolean onDown(MotionEvent e) {
         setClickFlag(FLAG_SELECT);
         if (SRIIsDrawRipple) {
-            rippleX = e.getX();
-            rippleY = e.getY();
             startRippleAnim();
         }
         return true;
@@ -182,7 +176,7 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
      */
     private void startRippleAnim() {
         isDrawingRipple = true;//开始绘制波纹的标识
-        AnimUtils.rippleAnim(width, rippleX, SRIDuration, new AnimUtils.OnRippleAnimListener() {
+        AnimUtils.rippleAnim(width, width/2, SRIDuration, new AnimUtils.OnRippleAnimListener() {
             @Override
             public void onAnimUpdate(float value, float progress) {
                 rippleRadios = value;
