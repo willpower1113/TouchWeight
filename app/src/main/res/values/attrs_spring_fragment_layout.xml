@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SpringFrameLayout">
+        <attr name="startColor" format="integer|color" />
+        <attr name="endColor" format="integer|color" />
+        <attr name="backgroundColor" format="integer|color" />
+        <attr name="rectRadios" format="float" />
+        <attr name="scaleModel" format="boolean" />
+        <attr name="isDrawRipple" format="boolean" />
+        <attr name="viewAlpha" format="integer" />
+        <attr name="viewRippleColor" format="integer" />
+        <attr name="animDuration" format="integer" />
+    </declare-styleable>
+
+</resources>

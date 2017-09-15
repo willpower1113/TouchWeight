@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 
 import com.willpower.touch.R;
 import com.willpower.touch.utils.AnimUtils;
+import com.willpower.touch.utils.ScreenUtils;
 
 import static android.view.Gravity.CENTER;
 import static com.willpower.touch.utils.AnimUtils.DEFAULT_DURATION;
@@ -72,6 +73,8 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
 
     private float rippleY;
 
+    private int animDuration;
+
     private int width;
 
     private int height;
@@ -98,13 +101,14 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
         }
         selector = ta.getColor(R.styleable.AppButton_selector, DEFAULT_SELECTOR);
         normal = ta.getColor(R.styleable.AppButton_normal, DEFAULT_NORMAL);
-        radioX = dp2px(ta.getDimension(R.styleable.AppButton_radioX, 0));
-        radioY = dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
+        radioX = ScreenUtils.dp2px(ta.getDimension(R.styleable.AppButton_radioX, 0));
+        radioY = ScreenUtils.dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
         shadowColor = ta.getColor(R.styleable.AppButton_shadowColor, DEFAULT_SHADOW_COLOR);
         shadowRadio = ta.getFloat(R.styleable.AppButton_shadowRadio, DEFAULT_SHADOW_RADIO);
         isDrawRipple = ta.getBoolean(R.styleable.AppButton_isDrawRipple, false);
         viewAlpha = ta.getInt(R.styleable.AppButton_viewAlpha, 70);
         viewRippleColor = ta.getInteger(R.styleable.AppButton_viewRippleColor, Color.WHITE);
+        animDuration = ta.getInteger(R.styleable.AppButton_animDuration,DEFAULT_DURATION);
         ta.recycle();
         if (shadowRadio > 0) {
             drawShadow = true;
@@ -200,7 +204,7 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
      */
     private void startRippleAnim() {
         isDrawingRipple = true;//开始绘制波纹的标识
-        AnimUtils.rippleAnim(width, rippleX, DEFAULT_DURATION, new AnimUtils.OnRippleAnimListener() {
+        AnimUtils.rippleAnim(width, rippleX, animDuration, new AnimUtils.OnRippleAnimListener() {
             @Override
             public void onAnimUpdate(float value, float progress) {
                 rippleRadios = value;
@@ -253,13 +257,5 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     public void setRadioY(float radioY) {
         this.radioY = radioY;
         postInvalidate();
-    }
-
-    private static float dp2px(float dp) {
-        if (dp == 0) {
-            return 0f;
-        }
-        Resources r = Resources.getSystem();
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 }

@@ -14,6 +14,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 import com.willpower.touch.R;
+import com.willpower.touch.utils.ScreenUtils;
 
 /**
  * Created by Administrator on 2017/8/24.
@@ -72,8 +73,8 @@ public class AppTextView extends AppCompatTextView implements GestureDetector.On
         }
         selector = ta.getColor(R.styleable.AppButton_selector, DEFAULT_SELECTOR);
         normal = ta.getColor(R.styleable.AppButton_normal, DEFAULT_NORMAL);
-        radioX = dp2px(ta.getDimension(R.styleable.AppButton_radioX, 0));
-        radioY = dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
+        radioX = ScreenUtils.dp2px(ta.getDimension(R.styleable.AppButton_radioX, 0));
+        radioY = ScreenUtils.dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
         shadowColor = ta.getColor(R.styleable.AppButton_shadowColor, DEFAULT_SHADOW_COLOR);
         shadowRadio = ta.getFloat(R.styleable.AppButton_shadowRadio, DEFAULT_SHADOW_RADIO);
         ta.recycle();
@@ -164,11 +165,4 @@ public class AppTextView extends AppCompatTextView implements GestureDetector.On
         this.normal = normal;
     }
 
-    private static float dp2px(float dp) {
-        if (dp == 0) {
-            return 0f;
-        }
-        Resources r = Resources.getSystem();
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
-    }
 }

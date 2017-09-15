@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="AppButton">
+    <declare-styleable name="AppRelativeLayout">
         <attr name="selector" format="color"></attr>
         <attr name="normal" format="color"></attr>
         <attr name="radioX" format="dimension"></attr>
@@ -10,5 +10,6 @@
         <attr name="isDrawRipple" format="boolean"></attr>
         <attr name="viewAlpha" format="integer"></attr>
         <attr name="viewRippleColor" format="integer"></attr>
+        <attr name="animDuration" format="integer"></attr>
     </declare-styleable>
 </resources>
