@@ -5,9 +5,9 @@
         <attr name="colorSelector" format="color" />
         <attr name="colorShadow" format="color" />
         <attr name="hasShadow" format="boolean" />
-        <attr name="isDrawRipple" format="boolean" />
-        <attr name="viewAlpha" format="integer" />
-        <attr name="viewRippleColor" format="integer" />
-        <attr name="animDuration" format="integer" />
+        <attr name="SRIIsDrawRipple" format="boolean" />
+        <attr name="SRIViewAlpha" format="integer" />
+        <attr name="SRIViewRippleColor" format="integer" />
+        <attr name="SRIDuration" format="integer" />
     </declare-styleable>
 </resources>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="AppRelativeLayout">
+    <declare-styleable name="AppButton">
         <attr name="selector" format="color"></attr>
         <attr name="normal" format="color"></attr>
         <attr name="radioX" format="dimension"></attr>
         <attr name="radioY" format="dimension"></attr>
         <attr name="shadowColor" format="color"></attr>
         <attr name="shadowRadio" format="float"></attr>
-        <attr name="isDrawRipple" format="boolean"></attr>
-        <attr name="viewAlpha" format="integer"></attr>
-        <attr name="viewRippleColor" format="integer"></attr>
-        <attr name="animDuration" format="integer"></attr>
+        <attr name="appButtonIsDrawRipple" format="boolean"></attr>
+        <attr name="appButtonViewAlpha" format="integer"></attr>
+        <attr name="appButtonViewRippleColor" format="integer"></attr>
+        <attr name="appButtonDuration" format="integer"></attr>
     </declare-styleable>
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <declare-styleable name="SpringFrameLayout">
         <attr name="startColor" format="integer|color" />
         <attr name="endColor" format="integer|color" />
@@ -12,5 +11,4 @@
         <attr name="viewRippleColor" format="integer" />
         <attr name="animDuration" format="integer" />
     </declare-styleable>
-
 </resources>

@@ -28,14 +28,14 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
     /**
      * 点击波纹
      */
-    private boolean isDrawRipple;
+    private boolean relativeLayoutIsDrawRipple;
     private boolean isDrawingRipple;
     private float rippleRadios;
     private float rippleX;
     private float rippleY;
-    private int viewAlpha;
-    private int viewRippleColor;
-    private int animDuration;
+    private int relativeLayoutViewAlpha;
+    private int relativeLayoutViewRippleColor;
+    private int relativeLayoutDuration;
     private int width;
 
     public AppRelativeLayout(Context context) {
@@ -54,10 +54,10 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AppRelativeLayout);
-        isDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_isDrawRipple, false);
-        viewAlpha = ta.getInt(R.styleable.AppRelativeLayout_viewAlpha, 70);
-        viewRippleColor = ta.getInteger(R.styleable.AppRelativeLayout_viewRippleColor, Color.WHITE);
-        animDuration = ta.getInteger(R.styleable.AppRelativeLayout_animDuration, DEFAULT_DURATION);
+        relativeLayoutIsDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutIsDrawRipple, false);
+        relativeLayoutViewAlpha = ta.getInt(R.styleable.AppRelativeLayout_relativeLayoutViewAlpha, 70);
+        relativeLayoutViewRippleColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutViewRippleColor, Color.WHITE);
+        relativeLayoutDuration = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutDuration, DEFAULT_DURATION);
         ta.recycle();
     }
 
@@ -68,8 +68,8 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         if (isDrawingRipple) {//绘制波纹
             RectF rectRect = new RectF(rippleX - rippleRadios, rippleY - rippleRadios, rippleX + rippleRadios, rippleY + rippleRadios);
             Paint ripplePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            ripplePaint.setColor(viewRippleColor);
-            ripplePaint.setAlpha(viewAlpha);
+            ripplePaint.setColor(relativeLayoutViewRippleColor);
+            ripplePaint.setAlpha(relativeLayoutViewAlpha);
             canvas.drawOval(rectRect, ripplePaint);
         }
     }
@@ -79,7 +79,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
      */
     private void startRippleAnim() {
         isDrawingRipple = true;//开始绘制波纹的标识
-        AnimUtils.rippleAnim(width, rippleX, animDuration, new AnimUtils.OnRippleAnimListener() {
+        AnimUtils.rippleAnim(width, rippleX, relativeLayoutDuration, new AnimUtils.OnRippleAnimListener() {
             @Override
             public void onAnimUpdate(float value, float progress) {
                 rippleRadios = value;
@@ -104,7 +104,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
 
     @Override
     public boolean onDown(MotionEvent e) {
-        if (isDrawRipple) {
+        if (relativeLayoutIsDrawRipple) {
             rippleX = e.getX();
             rippleY = e.getY();
             startRippleAnim();

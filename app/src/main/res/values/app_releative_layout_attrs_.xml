@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppRelativeLayout">
+        <attr name="relativeLayoutIsDrawRipple" format="boolean"></attr>
+        <attr name="relativeLayoutViewAlpha" format="integer"></attr>
+        <attr name="relativeLayoutViewRippleColor" format="integer"></attr>
+        <attr name="relativeLayoutDuration" format="integer"></attr>
+    </declare-styleable>
+</resources>

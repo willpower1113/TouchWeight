@@ -3,8 +3,8 @@ package com.willpower.touch.prompt.helper;
 import android.view.View;
 import android.view.animation.Animation;
 
-import com.willpower.main.anim.FadeScaleViewAnimProvider;
-import com.willpower.main.anim.ViewAnimProvider;
+import com.willpower.touch.prompt.anim.FadeScaleViewAnimProvider;
+import com.willpower.touch.prompt.anim.ViewAnimProvider;
 
 
 /**

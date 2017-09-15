@@ -73,7 +73,7 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
 
     private float rippleY;
 
-    private int animDuration;
+    private int appButtonDuration;
 
     private int width;
 
@@ -105,10 +105,10 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
         radioY = ScreenUtils.dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
         shadowColor = ta.getColor(R.styleable.AppButton_shadowColor, DEFAULT_SHADOW_COLOR);
         shadowRadio = ta.getFloat(R.styleable.AppButton_shadowRadio, DEFAULT_SHADOW_RADIO);
-        isDrawRipple = ta.getBoolean(R.styleable.AppButton_isDrawRipple, false);
-        viewAlpha = ta.getInt(R.styleable.AppButton_viewAlpha, 70);
-        viewRippleColor = ta.getInteger(R.styleable.AppButton_viewRippleColor, Color.WHITE);
-        animDuration = ta.getInteger(R.styleable.AppButton_animDuration,DEFAULT_DURATION);
+        isDrawRipple = ta.getBoolean(R.styleable.AppButton_appButtonIsDrawRipple, false);
+        viewAlpha = ta.getInt(R.styleable.AppButton_appButtonViewAlpha, 70);
+        viewRippleColor = ta.getInteger(R.styleable.AppButton_appButtonViewRippleColor, Color.WHITE);
+        appButtonDuration = ta.getInteger(R.styleable.AppButton_appButtonDuration,DEFAULT_DURATION);
         ta.recycle();
         if (shadowRadio > 0) {
             drawShadow = true;
@@ -204,7 +204,7 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
      */
     private void startRippleAnim() {
         isDrawingRipple = true;//开始绘制波纹的标识
-        AnimUtils.rippleAnim(width, rippleX, animDuration, new AnimUtils.OnRippleAnimListener() {
+        AnimUtils.rippleAnim(width, rippleX, appButtonDuration, new AnimUtils.OnRippleAnimListener() {
             @Override
             public void onAnimUpdate(float value, float progress) {
                 rippleRadios = value;

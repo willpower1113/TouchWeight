@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="willpower_normal_color">#FF4081</color>
-
+    <color name="content_color">#343434</color>
+    <color name="tip_color">#6C6C6C</color>
+    <color name="retry_color">#C0C0C0</color>
 </resources>

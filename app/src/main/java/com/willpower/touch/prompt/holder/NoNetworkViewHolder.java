@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.willpower.main.R;
+import com.willpower.touch.R;
 
 
 public class NoNetworkViewHolder extends BaseHolder {

@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.willpower.main.R;
+import com.willpower.touch.R;
 
 
 public class LoadingViewHolder extends BaseHolder {

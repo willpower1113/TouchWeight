@@ -4,11 +4,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.willpower.main.holder.EmptyViewHolder;
-import com.willpower.main.holder.ErrorViewHolder;
-import com.willpower.main.holder.LoadingViewHolder;
-import com.willpower.main.holder.NoNetworkViewHolder;
-import com.willpower.main.holder.TimeOutViewHolder;
+import com.willpower.touch.prompt.holder.EmptyViewHolder;
+import com.willpower.touch.prompt.holder.ErrorViewHolder;
+import com.willpower.touch.prompt.holder.LoadingViewHolder;
+import com.willpower.touch.prompt.holder.NoNetworkViewHolder;
+import com.willpower.touch.prompt.holder.TimeOutViewHolder;
+
 
 /**
  * <pre>

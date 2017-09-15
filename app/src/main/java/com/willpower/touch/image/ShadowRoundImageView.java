@@ -42,11 +42,11 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
     /**
      * 波纹效果
      */
-    private boolean isDrawRipple;
+    private boolean SRIIsDrawRipple;
 
-    private int viewAlpha;
+    private int SRIViewAlpha;
 
-    private int viewRippleColor;
+    private int SRIViewRippleColor;
 
     private boolean isDrawingRipple;
 
@@ -56,7 +56,7 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
 
     private float rippleY;
 
-    private int animDuration;
+    private int SRIDuration;
 
     private int width;
 
@@ -87,10 +87,10 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
         colorShadow = ta.getColor(R.styleable.ShadowRoundImageView_colorShadow, DEFAULT_DARK_COLOR);
         colorNormal = ta.getColor(R.styleable.ShadowRoundImageView_colorNormal, Color.WHITE);
         colorSelector = ta.getColor(R.styleable.ShadowRoundImageView_colorSelector, Color.LTGRAY);
-        isDrawRipple = ta.getBoolean(R.styleable.ShadowRoundImageView_isDrawRipple, false);
-        viewAlpha = ta.getInt(R.styleable.ShadowRoundImageView_viewAlpha, 70);
-        viewRippleColor = ta.getInteger(R.styleable.ShadowRoundImageView_viewRippleColor, Color.WHITE);
-        animDuration = ta.getInteger(R.styleable.ShadowRoundImageView_animDuration,DEFAULT_DURATION);
+        SRIIsDrawRipple = ta.getBoolean(R.styleable.ShadowRoundImageView_SRIIsDrawRipple, false);
+        SRIViewAlpha = ta.getInt(R.styleable.ShadowRoundImageView_SRIViewAlpha, 70);
+        SRIViewRippleColor = ta.getInteger(R.styleable.ShadowRoundImageView_SRIViewRippleColor, Color.WHITE);
+        SRIDuration = ta.getInteger(R.styleable.ShadowRoundImageView_SRIDuration,DEFAULT_DURATION);
         ta.recycle();
     }
 
@@ -115,8 +115,8 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
         if (isDrawingRipple) {//绘制波纹
             RectF rectRect = new RectF(rippleX - rippleRadios, rippleY - rippleRadios, rippleX + rippleRadios, rippleY + rippleRadios);
             Paint ripplePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            ripplePaint.setColor(viewRippleColor);
-            ripplePaint.setAlpha(viewAlpha);
+            ripplePaint.setColor(SRIViewRippleColor);
+            ripplePaint.setAlpha(SRIViewAlpha);
             canvas.drawOval(rectRect, ripplePaint);
         }
     }
@@ -133,7 +133,7 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
     @Override
     public boolean onDown(MotionEvent e) {
         setClickFlag(FLAG_SELECT);
-        if (isDrawRipple) {
+        if (SRIIsDrawRipple) {
             rippleX = e.getX();
             rippleY = e.getY();
             startRippleAnim();
@@ -182,7 +182,7 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
      */
     private void startRippleAnim() {
         isDrawingRipple = true;//开始绘制波纹的标识
-        AnimUtils.rippleAnim(width, rippleX, animDuration, new AnimUtils.OnRippleAnimListener() {
+        AnimUtils.rippleAnim(width, rippleX, SRIDuration, new AnimUtils.OnRippleAnimListener() {
             @Override
             public void onAnimUpdate(float value, float progress) {
                 rippleRadios = value;

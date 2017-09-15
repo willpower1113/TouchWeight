@@ -8,20 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.willpower.main.R;
-import com.willpower.main.StateLayout;
-import com.willpower.main.bean.EmptyItem;
-import com.willpower.main.bean.ErrorItem;
-import com.willpower.main.bean.LoadingItem;
-import com.willpower.main.bean.LoginItem;
-import com.willpower.main.bean.NoNetworkItem;
-import com.willpower.main.bean.TimeOutItem;
-import com.willpower.main.holder.EmptyViewHolder;
-import com.willpower.main.holder.ErrorViewHolder;
-import com.willpower.main.holder.LoadingViewHolder;
-import com.willpower.main.holder.LoginViewHolder;
-import com.willpower.main.holder.NoNetworkViewHolder;
-import com.willpower.main.holder.TimeOutViewHolder;
+import com.willpower.touch.R;
+import com.willpower.touch.prompt.StateLayout;
+import com.willpower.touch.prompt.bean.EmptyItem;
+import com.willpower.touch.prompt.bean.ErrorItem;
+import com.willpower.touch.prompt.bean.LoadingItem;
+import com.willpower.touch.prompt.bean.LoginItem;
+import com.willpower.touch.prompt.bean.NoNetworkItem;
+import com.willpower.touch.prompt.bean.TimeOutItem;
+import com.willpower.touch.prompt.holder.EmptyViewHolder;
+import com.willpower.touch.prompt.holder.ErrorViewHolder;
+import com.willpower.touch.prompt.holder.LoadingViewHolder;
+import com.willpower.touch.prompt.holder.LoginViewHolder;
+import com.willpower.touch.prompt.holder.NoNetworkViewHolder;
+import com.willpower.touch.prompt.holder.TimeOutViewHolder;
 
 
 /**
