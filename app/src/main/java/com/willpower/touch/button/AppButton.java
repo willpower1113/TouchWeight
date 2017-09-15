@@ -14,8 +14,10 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 import com.willpower.touch.R;
+import com.willpower.touch.utils.AnimUtils;
 
 import static android.view.Gravity.CENTER;
+import static com.willpower.touch.utils.AnimUtils.DEFAULT_DURATION;
 
 /**
  * Created by Administrator on 2017/8/23.
@@ -53,6 +55,28 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
      */
     private GestureDetector mGestureDetector;
 
+    /**
+     * 波纹效果
+     */
+    private boolean isDrawRipple;
+
+    private int viewAlpha;
+
+    private int viewRippleColor;
+
+    private boolean isDrawingRipple;
+
+    private float rippleRadios;
+
+    private float rippleX;
+
+    private float rippleY;
+
+    private int width;
+
+    private int height;
+
+
     public AppButton(Context context) {
         super(context);
     }
@@ -78,6 +102,9 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
         radioY = dp2px(ta.getDimension(R.styleable.AppButton_radioY, 0));
         shadowColor = ta.getColor(R.styleable.AppButton_shadowColor, DEFAULT_SHADOW_COLOR);
         shadowRadio = ta.getFloat(R.styleable.AppButton_shadowRadio, DEFAULT_SHADOW_RADIO);
+        isDrawRipple = ta.getBoolean(R.styleable.AppButton_isDrawRipple, false);
+        viewAlpha = ta.getInt(R.styleable.AppButton_viewAlpha, 70);
+        viewRippleColor = ta.getInteger(R.styleable.AppButton_viewRippleColor, Color.WHITE);
         ta.recycle();
         if (shadowRadio > 0) {
             drawShadow = true;
@@ -91,16 +118,18 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
 
     @Override
     protected void onDraw(Canvas canvas) {
+        width = getWidth();
+        height = getHeight();
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(color_rect);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         RectF rect;
         if (drawShadow) {
             setLayerType(LAYER_TYPE_SOFTWARE,null);
-            rect = new RectF(shadowRadio,shadowRadio, getWidth() - shadowRadio, getHeight() - shadowRadio);
+            rect = new RectF(shadowRadio, shadowRadio, width - shadowRadio, height - shadowRadio);
             paint.setShadowLayer(shadowRadio, 0, 0, shadowColor);
         } else {
-            rect = new RectF(0, 0, getWidth(), getHeight());
+            rect = new RectF(0, 0, width, height);
         }
         if (radioX > 0 || radioY > 0) {
             canvas.drawRoundRect(rect, radioX, radioY, paint);
@@ -108,6 +137,13 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
             canvas.drawRect(rect, paint);
         }
         super.onDraw(canvas);
+        if (isDrawingRipple) {//绘制波纹
+            RectF rectRect = new RectF(rippleX - rippleRadios, rippleY - rippleRadios, rippleX + rippleRadios, rippleY + rippleRadios);
+            Paint ripplePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            ripplePaint.setColor(viewRippleColor);
+            ripplePaint.setAlpha(viewAlpha);
+            canvas.drawOval(rectRect, ripplePaint);
+        }
     }
 
     @Override
@@ -121,6 +157,11 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     @Override
     public boolean onDown(MotionEvent e) {
         setColor_rect(selector);
+        if (isDrawRipple) {
+            rippleX = e.getX();
+            rippleY = e.getY();
+            startRippleAnim();
+        }
         return true;
     }
 
@@ -155,6 +196,26 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
         // Auto-generated method stub
         setColor_rect(normal);
         return false;
+    }
+
+    /**
+     * 波纹动画
+     */
+    private void startRippleAnim() {
+        isDrawingRipple = true;//开始绘制波纹的标识
+        AnimUtils.rippleAnim(width, rippleX, DEFAULT_DURATION, new AnimUtils.OnRippleAnimListener() {
+            @Override
+            public void onAnimUpdate(float value, float progress) {
+                rippleRadios = value;
+                postInvalidate();
+            }
+
+            @Override
+            public void onAnimFinish() {
+                isDrawingRipple = false;
+                postInvalidate();
+            }
+        });
     }
 
     private void setColor_rect(int color_rect) {
