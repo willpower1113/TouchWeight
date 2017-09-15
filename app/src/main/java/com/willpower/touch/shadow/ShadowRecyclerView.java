@@ -67,6 +67,7 @@ public class ShadowRecyclerView extends RecyclerView {
         radios = ta.getInt(R.styleable.ShadowRecyclerView_radios, 0);
         mShadowModel = ta.getInt(R.styleable.ShadowRecyclerView_mShadowModel, MODEL_ALL);
         ta.recycle();
+
         hasShadow = shadowsRadio > 0 ? true : false;
     }
 
