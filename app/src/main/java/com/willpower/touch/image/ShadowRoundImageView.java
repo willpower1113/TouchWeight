@@ -129,9 +129,6 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
     @Override
     public boolean onDown(MotionEvent e) {
         setClickFlag(FLAG_SELECT);
-        if (SRIIsDrawRipple) {
-            startRippleAnim();
-        }
         return true;
     }
 
@@ -143,6 +140,9 @@ public class ShadowRoundImageView extends AppCompatImageView implements GestureD
     public boolean onSingleTapUp(MotionEvent e) {
         setClickFlag(FLAG_NORMAL);
         performClick();
+        if (SRIIsDrawRipple) {
+            startRippleAnim();
+        }
         return false;
     }
 

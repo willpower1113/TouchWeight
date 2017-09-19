@@ -3,7 +3,7 @@
     <declare-styleable name="AppRelativeLayout">
         <attr name="relativeLayoutIsDrawRipple" format="boolean"></attr>
         <attr name="relativeLayoutViewAlpha" format="integer"></attr>
-        <attr name="relativeLayoutViewRippleColor" format="integer"></attr>
+        <attr name="relativeLayoutViewRippleColor" format="integer|color"></attr>
         <attr name="relativeLayoutDuration" format="integer"></attr>
     </declare-styleable>
 </resources>

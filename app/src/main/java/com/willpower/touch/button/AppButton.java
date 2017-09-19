@@ -164,7 +164,6 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
         if (isDrawRipple) {
             rippleX = e.getX();
             rippleY = e.getY();
-            startRippleAnim();
         }
         return true;
     }
@@ -178,6 +177,9 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     public boolean onSingleTapUp(MotionEvent e) {
         setColor_rect(normal);
         performClick();
+        if (isDrawRipple) {
+            startRippleAnim();
+        }
         return false;
     }
 

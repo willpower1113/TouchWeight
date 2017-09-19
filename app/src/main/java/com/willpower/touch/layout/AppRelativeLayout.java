@@ -107,7 +107,6 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         if (relativeLayoutIsDrawRipple) {
             rippleX = e.getX();
             rippleY = e.getY();
-            startRippleAnim();
         }
         return true;
     }
@@ -120,6 +119,9 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
         performClick();
+        if (relativeLayoutIsDrawRipple) {
+            startRippleAnim();
+        }
         return false;
     }
 
