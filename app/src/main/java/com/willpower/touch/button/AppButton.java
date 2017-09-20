@@ -76,7 +76,6 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     private int width;
 
     private int height;
-
     private boolean canClickable;
 
 
