@@ -87,6 +87,7 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     public AppButton(Context context, AttributeSet attrs) {
         super(context, attrs, 0);
         init(context, attrs);
+        setCanClickable(true);
         mGestureDetector = new GestureDetector(context, this);
     }
 
