@@ -1,7 +1,6 @@
 package com.willpower.touch.button;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
@@ -78,6 +76,8 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     private int width;
 
     private int height;
+
+    private boolean canClickable;
 
 
     public AppButton(Context context) {
@@ -153,14 +153,18 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getActionMasked() == MotionEvent.ACTION_CANCEL || event.getActionMasked() == MotionEvent.ACTION_UP) {
-            setColor_rect(normal);
+            if (isCanClickable()) {
+                setColor_rect(normal);
+            }
         }
         return mGestureDetector.onTouchEvent(event);
     }
 
     @Override
     public boolean onDown(MotionEvent e) {
-        setColor_rect(selector);
+        if (isCanClickable()) {
+            setColor_rect(selector);
+        }
         if (isDrawRipple) {
             rippleX = e.getX();
             rippleY = e.getY();
@@ -175,32 +179,32 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
 
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
-        setColor_rect(normal);
-        performClick();
+        if (isCanClickable()) {
+            setColor_rect(normal);
+            performClick();
+        }
         if (isDrawRipple) {
             startRippleAnim();
         }
         return false;
     }
-
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         // Auto-generated method stub
         return false;
     }
-
     @Override
     public void onLongPress(MotionEvent e) {
         //长安时，手动触发长安事件
-        performLongClick();
+        if (isCanClickable()) {
+            performLongClick();
+        }
     }
-
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         // Auto-generated method stub
         return false;
     }
-
     /**
      * 波纹动画
      */
@@ -259,5 +263,13 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
     public void setRadioY(float radioY) {
         this.radioY = radioY;
         postInvalidate();
+    }
+
+    public boolean isCanClickable() {
+        return canClickable;
+    }
+
+    public void setCanClickable(boolean canClickable) {
+        this.canClickable = canClickable;
     }
 }

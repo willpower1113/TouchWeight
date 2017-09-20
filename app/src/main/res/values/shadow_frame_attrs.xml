@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShadowFrameLayout">
+        <attr name="sfColor" format="color" />
+        <attr name="sfRadio" format="dimension" />
+        <attr name="mRadios" format="dimension" />
+        <attr name="bgColor" format="color" />
+    </declare-styleable>
+</resources>
