@@ -118,6 +118,7 @@ public class AppButton extends AppCompatButton implements GestureDetector.OnGest
         }
         color_rect = normal;
         setBackgroundColor(DEFAULT_NORMAL);
+
         setGravity(CENTER);
     }
 
