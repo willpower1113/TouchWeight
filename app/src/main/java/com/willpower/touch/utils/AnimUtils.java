@@ -20,7 +20,7 @@ public class AnimUtils {
      * @param duration 动画时间
      * @param listener 动画监听
      */
-    public static void rippleAnim(int viewSize, float rippleX, int duration, final OnRippleAnimListener listener) {
+    public static void rippleAnim(int viewSize, float rippleX, long duration, final OnRippleAnimListener listener) {
         float maxLength;
         if (rippleX > viewSize / 2) {
             maxLength = rippleX;

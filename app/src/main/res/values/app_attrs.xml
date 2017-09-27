@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppButton">
+        <!--点击反馈模式（分两种）：1设置normalColor，selectColor 2.覆盖透明色，可设置覆盖的颜色和透明度-->
+        <attr name="btnClickModel" format="enum">
+            <enum name="change" value="1"/>
+            <enum name="cover" value="2"/>
+        </attr>
+        <attr name="btnNormalColor" format="color"/>
+        <attr name="btnSelectColor" format="color"/>
+        <attr name="btnFilletX" format="float"/>
+        <attr name="btnFilletY" format="float"/>
+        <!--覆盖Color-->
+        <attr name="btnCoverColor" format="color"/>
+        <attr name="btnStrokeColor" format="color" />
+        <attr name="btnStrokeWidth" format="float" />
+        <attr name="btnRadios" format="float" />
+        <attr name="btnShadowRadios" format="float" />
+        <attr name="btnNoShadow" format="boolean" />
+        <!--阴影偏移量-->
+        <attr name="btnShadowOffsetX" format="float" />
+        <attr name="btnShadowOffsetY" format="float" />
+        <attr name="btnShadowColor" format="color" />
+        <!--点击是否有波纹动画-->
+        <attr name="btnNoRipple" format="boolean" />
+        <!--点击动画位置：1.down 2.up 3.afterClick-->
+        <attr name="btnRipplePosition" format="enum">
+            <enum name="down" value="1" />
+            <enum name="up" value="2" />
+        </attr>
+        <attr name="btnRippleColor" format="color" />
+        <!--波纹动画时间-->
+        <attr name="btnRippleDuration" format="integer" />
+        <attr name="btnRippleAlpha" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="BaseImageView">
+        <!--点击反馈模式（分两种）：1设置normalColor，selectColor 2.覆盖透明色，可设置覆盖的颜色和透明度-->
+        <attr name="imageClickModel" format="enum">
+            <enum name="change" value="1"/>
+            <enum name="cover" value="2"/>
+        </attr>
+        <attr name="imageNormalColor" format="color" />
+        <attr name="imageSelectColor" format="color" />
+        <!--覆盖Color-->
+        <attr name="imageCoverColor" format="color"/>
+        <attr name="imageStrokeColor" format="color"/>
+        <attr name="imageStrokeWidth" format="float"/>
+        <attr name="imageRadios" format="float"/>
+        <attr name="imageShadowRadios" format="float"/>
+        <attr name="imageNoShadow" format="boolean"/>
+        <!--阴影偏移量-->
+        <attr name="imageShadowOffsetX" format="float"/>
+        <attr name="imageShadowOffsetY" format="float"/>
+        <attr name="imageShadowColor" format="color"/>
+        <!--点击是否有波纹动画-->
+        <attr name="imageNoRipple" format="boolean"/>
+        <!--点击动画位置：1.down 2.up 3.afterClick-->
+        <attr name="imageRipplePosition" format="enum">
+            <enum name="down" value="1" />
+            <enum name="up" value="2" />
+        </attr>
+        <attr name="imageRippleColor" format="color" />
+        <!--波纹动画时间-->
+        <attr name="imageRippleDuration" format="integer" />
+        <attr name="imageRippleAlpha" format="integer" />
+    </declare-styleable>
+
+</resources>
