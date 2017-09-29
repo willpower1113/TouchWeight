@@ -159,8 +159,12 @@ public abstract class BaseImageView extends AppCompatImageView implements Gestur
     @Override
     public boolean onDown(MotionEvent e) {
         setTouching(true);
-        if (!appNoRipple && ripplePosition == POSITION_DOWN) {
-            startRippleAnim();
+        if (!appNoRipple) {
+            rippleX = e.getX();
+            rippleY = e.getY();
+            if (ripplePosition == POSITION_DOWN) {
+                startRippleAnim();
+            }
         }
         return true;
     }

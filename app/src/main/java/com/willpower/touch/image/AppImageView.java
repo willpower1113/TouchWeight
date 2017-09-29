@@ -60,7 +60,6 @@ public class AppImageView extends BaseImageView {
     @Override
     protected void drawFill(Canvas canvas, RectF rectF) {
     }
-
     //绘制覆盖层
     protected void drawCover(Canvas canvas, RectF rectF) {
         if (!isTouching) return;
@@ -69,7 +68,6 @@ public class AppImageView extends BaseImageView {
         cover.setColor(coverColor);
         canvas.drawRoundRect(rectF, filletX, filletY, cover);
     }
-
     //绘制波纹
     protected void drawRippleWithAnim(Canvas canvas) {
         if (isDrawingRipple) {
@@ -80,21 +78,18 @@ public class AppImageView extends BaseImageView {
             canvas.drawOval(rectRect, ripplePaint);
         }
     }
-
-    //********************************************************draw********************************************//
-
+//********************************************************draw********************************************//
     /**
      * 波纹动画
      */
     protected void startRippleAnim() {
         isDrawingRipple = true;//开始绘制波纹的标识
-        AnimUtils.rippleAnim(viewWidth, viewWidth / 2, rippleDuration, new AnimUtils.OnRippleAnimListener() {
+        AnimUtils.rippleAnim(viewWidth, rippleX, rippleDuration, new AnimUtils.OnRippleAnimListener() {
             @Override
             public void onAnimUpdate(float value, float progress) {
                 rippleRadios = value;
                 postInvalidate();
             }
-
             @Override
             public void onAnimFinish() {
                 isDrawingRipple = false;
