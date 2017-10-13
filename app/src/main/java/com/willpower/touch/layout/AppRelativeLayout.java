@@ -81,11 +81,12 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
             setBackgroundColor(Color.TRANSPARENT);
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
             paint.setStyle(Paint.Style.FILL);
+            paint.setColor(relativeLayoutColor);
             RectF rectF = new RectF(1, 1, width - 1, height - relativeLayoutShadowRadios);
             if (relativeLayoutShadowRadios > 0) {
                 setLayerType(LAYER_TYPE_SOFTWARE,paint);//关闭硬件加速
                 paint.setShadowLayer(relativeLayoutShadowRadios,0,0,relativeLayoutShadowColor);
-                canvas.drawRoundRect(rectF,relativeLayoutRadios,relativeLayoutRadios * (height / width), paint);
+                canvas.drawRoundRect(rectF,relativeLayoutRadios,relativeLayoutRadios * (height / width),paint);
             }
         } else {
             setBackgroundColor(relativeLayoutColor);
