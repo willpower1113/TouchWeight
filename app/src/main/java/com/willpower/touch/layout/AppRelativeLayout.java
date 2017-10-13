@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -41,7 +40,8 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
     private int relativeLayoutShadowColor;
     private float relativeLayoutRadios;
     private int relativeLayoutColor;
-    private boolean relativeLayoutHasStroke;
+    private float relativeStrokeWidth;
+    private int relativeStrokeColor;
     private int width, height;
 
     public AppRelativeLayout(Context context) {
@@ -52,6 +52,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         super(context, attrs, 0);
         mGestureDetector = new GestureDetector(context, this);
         init(context, attrs);
+        setBackgroundColor(Color.TRANSPARENT);
     }
 
     public AppRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -60,15 +61,16 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AppRelativeLayout);
-        relativeLayoutIsDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutIsDrawRipple,true);
+        relativeLayoutIsDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutIsDrawRipple, true);
         relativeLayoutViewAlpha = ta.getInt(R.styleable.AppRelativeLayout_relativeLayoutViewAlpha, 70);
         relativeLayoutViewRippleColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutViewRippleColor, Color.WHITE);
         relativeLayoutDuration = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutDuration, DEFAULT_DURATION);
         relativeLayoutShadowRadios = ta.getFloat(R.styleable.AppRelativeLayout_relativeLayoutShadowRadios, 0);
         relativeLayoutShadowColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutShadowColor, Color.parseColor("#000000"));
-        relativeLayoutHasStroke = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutHasStroke, false);
+        relativeStrokeWidth = ta.getFloat(R.styleable.AppRelativeLayout_relativeStrokeWidth, 0f);
+        relativeStrokeColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeStrokeColor, Color.parseColor("#000000"));
         relativeLayoutRadios = ta.getFloat(R.styleable.AppRelativeLayout_relativeLayoutRadios, 0);
-        relativeLayoutColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutColor,Color.WHITE);
+        relativeLayoutColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutColor, Color.WHITE);
         ta.recycle();
     }
 
@@ -77,19 +79,10 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         super.onDraw(canvas);
         width = getWidth();
         height = getHeight();
-        if (relativeLayoutHasStroke) {
-            setBackgroundColor(Color.TRANSPARENT);
-            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            paint.setStyle(Paint.Style.FILL);
-            paint.setColor(relativeLayoutColor);
-            RectF rectF = new RectF(1, 1, width - 1,height - relativeLayoutShadowRadios);
-            if (relativeLayoutShadowRadios > 0) {
-                setLayerType(LAYER_TYPE_SOFTWARE,null);//关闭硬件加速
-                paint.setShadowLayer(relativeLayoutShadowRadios,0,0,relativeLayoutShadowColor);
-            }
-            canvas.drawRoundRect(rectF,relativeLayoutRadios,relativeLayoutRadios * (height / width),paint);
+        if (relativeStrokeWidth > 0) {
+            drawStrokeAndFill(canvas);
         } else {
-            setBackgroundColor(relativeLayoutColor);
+            drawFill(canvas);
         }
         if (isDrawingRipple) {//绘制波纹
             RectF rectRect = new RectF(rippleX - rippleRadios, rippleY - rippleRadios, rippleX + rippleRadios, rippleY + rippleRadios);
@@ -98,6 +91,48 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
             ripplePaint.setAlpha(relativeLayoutViewAlpha);
             canvas.drawOval(rectRect, ripplePaint);
         }
+    }
+
+
+    /**
+     * 绘制边框
+     */
+    private void drawStrokeAndFill(Canvas canvas) {
+        //边框
+        Paint stroke = new Paint(Paint.ANTI_ALIAS_FLAG);
+        stroke.setStyle(Paint.Style.STROKE);
+        stroke.setStrokeWidth(relativeStrokeWidth);
+        stroke.setColor(relativeStrokeColor);
+        if (relativeLayoutShadowRadios > 0) {
+            setLayerType(LAYER_TYPE_SOFTWARE, stroke);
+            stroke.setShadowLayer(relativeLayoutShadowRadios, 0, 0, relativeLayoutShadowColor);
+        }
+        RectF rectStroke = new RectF(relativeStrokeWidth, relativeStrokeWidth, width - relativeStrokeWidth, height - relativeLayoutShadowRadios - relativeStrokeWidth);
+
+        //主体
+        Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG);
+        fill.setStyle(Paint.Style.FILL);
+        fill.setColor(relativeLayoutColor);
+        RectF rectFill = new RectF(relativeStrokeWidth * 2, relativeStrokeWidth * 2, width - relativeStrokeWidth * 2, height - relativeLayoutShadowRadios - relativeStrokeWidth * 2);
+        //绘制
+        canvas.drawRoundRect(rectStroke, relativeLayoutRadios, relativeLayoutRadios, stroke);
+        canvas.drawRoundRect(rectFill, relativeLayoutRadios, relativeLayoutRadios, fill);
+    }
+
+    /**
+     * 绘制主体
+     */
+    private void drawFill(Canvas canvas) {
+        //主体
+        Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG);
+        fill.setStyle(Paint.Style.FILL);
+        fill.setColor(relativeLayoutColor);
+        if (relativeLayoutShadowRadios > 0) {
+            setLayerType(LAYER_TYPE_SOFTWARE, fill);
+            fill.setShadowLayer(relativeLayoutShadowRadios, 0, 0, relativeLayoutShadowColor);
+        }
+        RectF rectFill = new RectF(1, 1, width - 1, height - relativeLayoutShadowRadios);
+        canvas.drawRoundRect(rectFill, relativeLayoutRadios, relativeLayoutRadios, fill);
     }
 
     /**
@@ -168,6 +203,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         // Auto-generated method stub
         return false;
     }
+
     public void setAppShadowRadios(float relativeLayoutShadowRadios) {
         this.relativeLayoutShadowRadios = relativeLayoutShadowRadios;
         postInvalidate();
