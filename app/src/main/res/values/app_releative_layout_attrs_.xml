@@ -5,5 +5,10 @@
         <attr name="relativeLayoutViewAlpha" format="integer"></attr>
         <attr name="relativeLayoutViewRippleColor" format="integer|color"></attr>
         <attr name="relativeLayoutDuration" format="integer"></attr>
+        <attr name="relativeLayoutShadowRadios" format="float"></attr>
+        <attr name="relativeLayoutShadowColor" format="color|integer"></attr>
+        <attr name="relativeLayoutHasStroke" format="boolean"></attr>
+        <attr name="relativeLayoutRadios" format="float"></attr>
+        <attr name="relativeLayoutColor" format="float"></attr>
     </declare-styleable>
 </resources>
