@@ -9,6 +9,6 @@
         <attr name="relativeLayoutShadowColor" format="color|integer"></attr>
         <attr name="relativeLayoutHasStroke" format="boolean"></attr>
         <attr name="relativeLayoutRadios" format="float"></attr>
-        <attr name="relativeLayoutColor" format="float"></attr>
+        <attr name="relativeLayoutColor" format="color|integer"></attr>
     </declare-styleable>
 </resources>
