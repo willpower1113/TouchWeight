@@ -68,7 +68,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         relativeLayoutShadowColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutShadowColor, Color.parseColor("#000000"));
         relativeLayoutHasStroke = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutHasStroke, false);
         relativeLayoutRadios = ta.getFloat(R.styleable.AppRelativeLayout_relativeLayoutRadios, 0);
-        relativeLayoutColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutColor, Color.TRANSPARENT);
+        relativeLayoutColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutColor, Color.WHITE);
         ta.recycle();
     }
 
