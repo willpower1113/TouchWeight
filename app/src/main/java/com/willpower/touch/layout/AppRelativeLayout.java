@@ -60,7 +60,7 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AppRelativeLayout);
-        relativeLayoutIsDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutIsDrawRipple, true);
+        relativeLayoutIsDrawRipple = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutIsDrawRipple,true);
         relativeLayoutViewAlpha = ta.getInt(R.styleable.AppRelativeLayout_relativeLayoutViewAlpha, 70);
         relativeLayoutViewRippleColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutViewRippleColor, Color.WHITE);
         relativeLayoutDuration = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutDuration, DEFAULT_DURATION);
@@ -68,26 +68,26 @@ public class AppRelativeLayout extends RelativeLayout implements GestureDetector
         relativeLayoutShadowColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutShadowColor, Color.parseColor("#000000"));
         relativeLayoutHasStroke = ta.getBoolean(R.styleable.AppRelativeLayout_relativeLayoutHasStroke, false);
         relativeLayoutRadios = ta.getFloat(R.styleable.AppRelativeLayout_relativeLayoutRadios, 0);
-        relativeLayoutColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutColor, Color.WHITE);
+        relativeLayoutColor = ta.getInteger(R.styleable.AppRelativeLayout_relativeLayoutColor,Color.WHITE);
         ta.recycle();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         width = getWidth();
         height = getHeight();
-        super.onDraw(canvas);
         if (relativeLayoutHasStroke) {
             setBackgroundColor(Color.TRANSPARENT);
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(relativeLayoutColor);
-            RectF rectF = new RectF(1, 1, width - 1, height - relativeLayoutShadowRadios);
+            RectF rectF = new RectF(1, 1, width - 1,height - relativeLayoutShadowRadios);
             if (relativeLayoutShadowRadios > 0) {
-                setLayerType(LAYER_TYPE_SOFTWARE,paint);//关闭硬件加速
+                setLayerType(LAYER_TYPE_SOFTWARE,null);//关闭硬件加速
                 paint.setShadowLayer(relativeLayoutShadowRadios,0,0,relativeLayoutShadowColor);
-                canvas.drawRoundRect(rectF,relativeLayoutRadios,relativeLayoutRadios * (height / width),paint);
             }
+            canvas.drawRoundRect(rectF,relativeLayoutRadios,relativeLayoutRadios * (height / width),paint);
         } else {
             setBackgroundColor(relativeLayoutColor);
         }
